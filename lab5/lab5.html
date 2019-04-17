@@ -174,7 +174,7 @@
         </tr>
         <tr class="strong">
             <td colspan="4" class="moveRight">Shipping</td>
-            <td>$100</td>
+            <td id="ship">$100</td>
         </tr>
         <tr class="warning strong text-danger">
             <td colspan="4" class="moveRight">Grand Total</td>
@@ -196,6 +196,7 @@
         var sub=0;
         var tax=0;
         var all=0;
+        var ship=40;
         function change() {
             var i=this.i;
             var line=document.createElement("tr");
@@ -212,8 +213,12 @@
         }
         tb.innerHTML+="";
         tax=sub*0.1;
-        all=sub+tax+100;
+        if(sub>=1000){
+            ship=0;
+        }
+        all=sub+tax+ship;
         document.getElementById("subtotal").innerText="$"+sub;
+        document.getElementById("ship").innerText="$"+ship;
         document.getElementById("taxtotal").innerText="$"+tax;
         document.getElementById("allin").innerText="$"+all;
     </script>
